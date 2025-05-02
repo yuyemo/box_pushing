@@ -7,7 +7,7 @@
 #include "game.h"
 #include"undo.h"
 
-// è·¨å¹³å°æ¸…å±å‡½æ•°
+// ¿çÆ½Ì¨ÇåÆÁº¯Êı
 void clear_screen(void) {
 #if defined(_WIN32)
     system("cls");
@@ -16,20 +16,20 @@ void clear_screen(void) {
 #endif
 }
 
-// åœ°å›¾ç»˜åˆ¶å‡½æ•°
+// µØÍ¼»æÖÆº¯Êı
 void draw_map(void) {
     for (int i = 0; i < map_scale; i++) {
         for (int j = 0; j < map_scale; j++) {
-            // ç©å®¶ä½ç½®ä¼˜å…ˆæ˜¾ç¤º
+            // Íæ¼ÒÎ»ÖÃÓÅÏÈÏÔÊ¾
             if (i == gamer_location[0] && j == gamer_location[1]) {
                 printf(" @ ");
             }
             else {
                 switch (map[i][j]) {
-                case 0: printf(" . "); break;  // ç©ºåœ°
-                case 1: printf(" # "); break;  // ç®±å­
-                case 2: printf(" O "); break;  // ç›®æ ‡ç‚¹
-                default: printf(" ? "); break; // å¼‚å¸¸
+                case 0: printf(" . "); break;  // ¿ÕµØ
+                case 1: printf(" # "); break;  // Ïä×Ó
+                case 2: printf(" O "); break;  // Ä¿±êµã
+                default: printf(" ? "); break; // Òì³£
                 }
             }
         }
@@ -37,17 +37,17 @@ void draw_map(void) {
     }
 }
 
-// æ˜¾ç¤ºæ­¥æ•°å’Œæ—¶é—´
+// ÏÔÊ¾²½ÊıºÍÊ±¼ä
 void display_status(void) {
-    printf("\næ­¥æ•°: %d    æ—¶é—´: %d ç§’\n", get_step_count(), get_elapsed_time());
+    printf("\n²½Êı: %d    Ê±¼ä: %d Ãë\n", get_step_count(), get_elapsed_time());
 }
 
-// æ¸¸æˆèƒœåˆ©æç¤º
+// ÓÎÏ·Ê¤ÀûÌáÊ¾
 void display_victory(void) {
-    printf("\nğŸ‰ğŸ‰ğŸ‰ æ­å–œä½ ï¼Œå®Œæˆæ¨ç®±å­æŒ‘æˆ˜ï¼ ğŸ‰ğŸ‰ğŸ‰\n");
+    printf("\n©c(£Ş¨Œ£Ş*)¡«¹§Ï²Äã£¬Íê³ÉÍÆÏä×ÓÌôÕ½£¡©c(£Ş¨Œ£Ş*)¡«\n");
 }
 
-// åˆ¤æ–­æ˜¯å¦èƒœåˆ©ï¼ˆæ‰€æœ‰ç›®æ ‡ç‚¹ä¸Šæœ‰ç®±å­ï¼‰
+// ÅĞ¶ÏÊÇ·ñÊ¤Àû£¨ËùÓĞÄ¿±êµãÉÏÓĞÏä×Ó£©
 int check_victory(void) {
     for (int i = 0; i < map_scale; i++) {
         for (int j = 0; j < map_scale; j++) {
@@ -56,7 +56,7 @@ int check_victory(void) {
     return 1;
 }
 
-// UIä¸»å¾ªç¯ï¼ˆæ¸¸æˆæ§åˆ¶æ ¸å¿ƒï¼‰
+// UIÖ÷Ñ­»·£¨ÓÎÏ·¿ØÖÆºËĞÄ£©
 void ui_loop(int level) {
     init(level);
     start_timer();
@@ -74,7 +74,7 @@ void ui_loop(int level) {
 
         int move_result = move();
         if (move_result == -1) {
-            printf("éæ³•è¾“å…¥ï¼Œè¯·æŒ‰ W/A/S/D ç§»åŠ¨\n");
+            printf("·Ç·¨ÊäÈë£¬Çë°´ W/A/S/D ÒÆ¶¯\n");
         }
     }
 }

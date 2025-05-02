@@ -61,13 +61,17 @@ int move() {
     if (valid != 0) return valid;
 
     // 第二步：处理移动逻辑
-    if (map[new_x][new_y] != 1) {  // 普通移动
+    if (map[new_x][new_y] != 1&&map[new_x][new_y]!=2) {  // 普通移动
         gamer_location[0] = new_x;
         gamer_location[1] = new_y;
         increase_step_count();  //  成功移动，计步 +1
         save();
         return 0;
-    } else {  // 推箱子逻辑
+    }
+    else if(map[new_x][new_y]==2){
+        return 1;
+    } 
+    else {  // 推箱子逻辑
         int n;
         int box_x = new_x + dx;
         int box_y = new_y + dy;

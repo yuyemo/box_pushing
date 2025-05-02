@@ -3,19 +3,21 @@
 
 int main(void) {
     int level;
-    printf("æ¬¢è¿æ¥åˆ°æ¨ç®±å­æ¸¸æˆï¼\n");
-    printf("è¯·é€‰æ‹©æ‚¨è¦æŒ‘æˆ˜çš„éš¾åº¦ï¼ˆç”±æ˜“åˆ°éš¾1~7ï¼‰:\n");
+    printf("»¶Ó­À´µ½ÍÆÏä×ÓÓÎÏ·£¡\n");
+    printf("ËµÃ÷£º\n#´ú±íÏä×Ó\n@´ú±íĞ¡ÈË\nO´ú±í¶´\n°´WASDÒÆ¶¯\n°´Z»ÚÆå\n");
+    printf("ÇëÑ¡ÔñÄúÒªÌôÕ½µÄÄÑ¶È£¨ÓÉÒ×µ½ÄÑ1~14£©:\n");
     scanf("%d",&level);
 
 
 #if defined(_WIN32)
     getchar();
 #else
-    getchar();  // ç±» Unix ç³»ç»Ÿä¸éœ€è¦é¢å¤–å¤„ç†
+    getchar();  // Àà Unix ÏµÍ³²»ĞèÒª¶îÍâ´¦Àí
 #endif
 
-    ui_loop(level);
+    ui_loop(level%15);
 
-    printf("æ¸¸æˆç»“æŸï¼Œæ„Ÿè°¢æ¸¸ç©ï¼\n");
+    printf("ÓÎÏ·½áÊø£¬¸ĞĞ»ÓÎÍæ£¡\n");
+    getchar();
     return 0;
 }
