@@ -21,6 +21,6 @@ void display_victory(void);
 int check_victory(void);
 
 // UI 主循环
-void ui_loop(void);
+void ui_loop(int level);
 void start_prompt(void) ;
 #endif // UI_H

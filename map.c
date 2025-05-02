@@ -25,8 +25,9 @@ static int is_duplicate(int loc[][2], int count, int x, int y) {
 
 
 // 初始化地图
-int init(void) {
-
+int init(int level) {
+    map_scale = (int)(level*0.4+5);
+    box_num = (int)(level+1);
     gamer_location[0] = 0;
     gamer_location[1] = 0;
 

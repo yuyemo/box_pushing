@@ -1,5 +1,6 @@
 // game.c
 #include "game.h"
+#include"undo.h"
 #include "timer.h"  //  引入计步接口
 #include <stdio.h>
 
@@ -46,6 +47,7 @@ int move() {
         case 's': dx = 1;  break;  // 下移
         case 'a': dy = -1; break;  // 左移
         case 'd': dy = 1;  break;  // 右移
+        case 'z': if(if_step_0())out();return 0;// 悔棋
         default:  return 0;        // 无效输入
     }
 
@@ -63,8 +65,10 @@ int move() {
         gamer_location[0] = new_x;
         gamer_location[1] = new_y;
         increase_step_count();  //  成功移动，计步 +1
+        save();
         return 0;
     } else {  // 推箱子逻辑
+        int n;
         int box_x = new_x + dx;
         int box_y = new_y + dy;
         
@@ -74,17 +78,33 @@ int move() {
 
         // 处理不同箱子目标位置类型
         if (map[box_x][box_y] == 2) {  // 推到目标点
+        for(n=0;n<box_num;n++){
+            if(new_x==box_location[n][0]&&new_y==box_location[n][1]){
+                break;
+            }
+        }
             map[new_x][new_y] = 0;     // 清除原箱子位置
+             box_location[n][0]=box_x;
+             box_location[n][1]=box_y;
         } else if (map[box_x][box_y] == 0) {  // 普通推动
+        
+        for(n=0;n<box_num;n++){
+             if(new_x==box_location[n][0]&&new_y==box_location[n][1]){
+                break;
+            }
+        }
             map[new_x][new_y] = 0;
             map[box_x][box_y] = 1;     // 设置新箱子位置
+            box_location[n][0]=box_x;
+            box_location[n][1]=box_y;
         } else {
             return 1; // 推动失败：目标点被阻挡
         }
-
+        
         gamer_location[0] = new_x;
         gamer_location[1] = new_y;
         increase_step_count();  //  推箱子成功，计步 +1
+        save();
         return 0;
     }
 }

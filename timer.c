@@ -28,3 +28,10 @@ void decrease_step_count(void) {
 int get_step_count(void) {
     return step_count;
 }
+
+int if_step_0(void){
+    if(step_count<=0){
+        return 0;
+    }
+    return 1;
+}

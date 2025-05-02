@@ -5,6 +5,7 @@
 #include "map.h"
 #include "timer.h"
 #include "game.h"
+#include"undo.h"
 
 // 跨平台清屏函数
 void clear_screen(void) {
@@ -56,11 +57,11 @@ int check_victory(void) {
 }
 
 // UI主循环（游戏控制核心）
-void ui_loop(void) {
-    init();
+void ui_loop(int level) {
+    init(level);
     start_timer();
     reset_step_count();
-
+    init_save();
     while (1) {
         clear_screen();
         draw_map();

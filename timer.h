@@ -16,5 +16,6 @@ void reset_step_count(void);
 void increase_step_count(void);
 void decrease_step_count(void);
 int get_step_count(void);
+int if_step_0(void);
 
 #endif

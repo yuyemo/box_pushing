@@ -13,7 +13,7 @@ extern int aim[MAX_SCALE][2];
 
 
 // 初始化地图和位置，返回0成功，1失败
-int init(void);
+int init(int level);
 
 
 // 扫描 map 中所有为 1 的坐标并更新 box_location
