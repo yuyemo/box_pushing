@@ -11,6 +11,7 @@ extern int gamer_location[2];
 extern int box_location[MAX_SCALE][2];
 extern int aim[MAX_SCALE][2];
 
+
 // 初始化地图和位置，返回0成功，1失败
 int init(void);
 

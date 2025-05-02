@@ -42,10 +42,10 @@ int move() {
 
     int dx = 0, dy = 0;
     switch (ch) {
-        case 'w': dy = -1; break;  // 上移
-        case 's': dy = 1;  break;  // 下移
-        case 'a': dx = -1; break;  // 左移
-        case 'd': dx = 1;  break;  // 右移
+        case 'w': dx = -1; break;  // 上移
+        case 's': dx = 1;  break;  // 下移
+        case 'a': dy = -1; break;  // 左移
+        case 'd': dy = 1;  break;  // 右移
         default:  return 0;        // 无效输入
     }
 
@@ -88,3 +88,4 @@ int move() {
         return 0;
     }
 }
+

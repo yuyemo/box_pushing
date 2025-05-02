@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "map.h"
+#include "game.h"
 
 
 // 全局变量定义
@@ -25,6 +26,7 @@ static int is_duplicate(int loc[][2], int count, int x, int y) {
 
 // 初始化地图
 int init(void) {
+
     gamer_location[0] = 0;
     gamer_location[1] = 0;
 
@@ -46,13 +48,14 @@ int init(void) {
         int x = rand() % map_scale;
         int y = rand() % map_scale;
 
-        if ((x == 0 && y == 0) || !is_valid_pos(x, y)) continue;
+         if ((x != 0 && y != 0) && is_valid_pos(x, y)==1) continue;
 
         if (!is_duplicate(used_locations, used, x, y)) {
             used_locations[used][0] = x;
             used_locations[used][1] = y;
 
             if (used < box_num) {
+                if ((x == 0 || y == 0||x==map_scale||y==map_scale) ) continue;
                 box_location[used][0] = x;
                 box_location[used][1] = y;
                 map[x][y] = 1;
@@ -88,3 +91,4 @@ int scan(void) {
 
     return found ? 3 : 2;
 }
+
