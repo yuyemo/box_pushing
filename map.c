@@ -55,7 +55,7 @@ int init(void) {
             used_locations[used][1] = y;
 
             if (used < box_num) {
-                if ((x == 0 || y == 0||x==map_scale||y==map_scale) ) continue;
+                if ((x == 0 || y == 0||x==map_scale-1||y==map_scale-1) ) continue;
                 box_location[used][0] = x;
                 box_location[used][1] = y;
                 map[x][y] = 1;
